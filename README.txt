@@ -16,6 +16,14 @@ The library attempts to launch the session in the following ways:
  * trying to launch other softphones (see below to add support
    for additional softphones)
 
+Dependencies
+------------
+
+ * The slf4j-api JAR is required at build and runtime.
+ * An slf4j logging implementation should be present in your application,
+   for example, if you use log4j already, you may want to add slf4j-log4j12
+   to your runtime classpath.
+
 Using it
 --------
 
@@ -33,6 +41,9 @@ It will also attempt to tweak the URI to match the medium required,
 for example, adding the query parameter "message" to an XMPP URI.
 Otherwise, the client may choose to start the session using any of
 those methods.
+
+Make sure you include a logging implementation such as slf4j-simple
+in your application classpath so that you can see the log messages.
 
 Adding support for other softphones
 -----------------------------------
