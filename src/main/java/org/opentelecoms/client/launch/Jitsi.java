@@ -66,7 +66,7 @@ public class Jitsi implements Client {
 					continue;
 				}
 			}
-    	} else if(os.startsWith("Linux")) {
+		} else if(File.separator.equals("/")) {  // UNIX-like filesystem
     		// Assume it is in PATH
     		jitsiBinary = new File("jitsi");
     	}
