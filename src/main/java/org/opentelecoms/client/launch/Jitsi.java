@@ -74,10 +74,6 @@ public class Jitsi implements Client {
     }
     
     private boolean runProc(ProcessBuilder pb) {
-    	File jitsiBinary = findJitsiBinary();
-    	if(jitsiBinary == null) {
-    		return false;
-    	}
     	try {
 			Process p = pb.start();
 			try {
@@ -116,10 +112,6 @@ public class Jitsi implements Client {
     }
     
     private boolean runJitsiWebStart(URI uri) {
-    	File jitsiBinary = findJitsiBinary();
-    	if(jitsiBinary == null) {
-    		return false;
-    	}
     	ProcessBuilder pb = new ProcessBuilder("javaws", "-open", uri.toString(), getJnlpLocation());
     	return runProc(pb);
     }
