@@ -5,11 +5,13 @@ import java.io.IOException;
 import java.net.URI;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.Vector;
 
 public class Jitsi implements Client {
 	
-	private static final String JITSI_EXE
-		= "C:\\Program Files\\Jitsi\\Jitsi.exe";
+	// Jitsi installation relative to %ProgramFiles% on Windows
+	private static final String PROGRAM_FILES_JITSI = "jitsi";
+	private static final String JITSI_EXE = "Jitsi.exe";
 	
 	private static final String LATEST_JNLP_LOCATION
 	    = "https://jitsi.org/webstart/latest/client.jnlp";
@@ -49,10 +51,21 @@ public class Jitsi implements Client {
     	File jitsiBinary = null;
     	if(os.startsWith("Windows")) {
     		// Assume it is in default location, may not be in PATH
-    		jitsiBinary = new File(JITSI_EXE);
-    		if(!jitsiBinary.exists()) {
-    			jitsiBinary = null;
-    		}
+			Vector<File> locations = new Vector<File>();
+			String val = System.getenv("ProgramFiles");
+			if(val != null) {
+				locations.add(new File(val, PROGRAM_FILES_JITSI));
+			}
+			val = System.getenv("ProgramFiles(x86)");
+			if(val != null) {
+				locations.add(new File(val, PROGRAM_FILES_JITSI));
+			}
+			for(File location : locations) {
+				jitsiBinary = new File(location, JITSI_EXE);
+				if(jitsiBinary.exists()) {
+					continue;
+				}
+			}
     	} else if(os.startsWith("Linux")) {
     		// Assume it is in PATH
     		jitsiBinary = new File("jitsi");
