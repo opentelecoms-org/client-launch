@@ -4,7 +4,7 @@
 
   <groupId>org.opentelecoms.client.launch</groupId>
   <artifactId>launch</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
+  <version>1.0.0</version>
   <packaging>jar</packaging>
 
   <name>launch</name>
