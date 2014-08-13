@@ -42,6 +42,10 @@
       <id>ossrh</id>
       <url>https://oss.sonatype.org/content/repositories/snapshots</url>
     </snapshotRepository>
+    <repository>
+      <id>ossrh</id>
+      <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+    </repository>
   </distributionManagement>
 
   <build>
@@ -54,7 +58,8 @@
           <target>1.6</target>
         </configuration>
       </plugin>
-      <plugin>
+      <!-- this is an alternative to the Maven deploy plugin -->
+      <!-- <plugin>
         <groupId>org.sonatype.plugins</groupId>
         <artifactId>nexus-staging-maven-plugin</artifactId>
         <extensions>true</extensions>
@@ -63,7 +68,7 @@
           <nexusUrl>https://oss.sonatype.org/</nexusUrl>
           <autoReleaseAfterClose>true</autoReleaseAfterClose>
         </configuration>
-      </plugin>
+      </plugin> -->
     </plugins>
   </build>
 
