@@ -27,7 +27,16 @@ Dependencies
 Using it
 --------
 
-Here is a simple example:
+If you are using Maven, you can obtain the JAR by adding the following
+declaration to the dependencies section of your pom.xml:
+
+  <dependency>
+    <groupId>org.opentelecoms.client.launch</groupId>
+    <artifactId>launch</artifactId>
+    <version>1.0.0</version>
+  </dependency>
+
+Here is a simple example of using the launcher from Java:
 
  Launcher launcher = Launcher.getInstance();
 
